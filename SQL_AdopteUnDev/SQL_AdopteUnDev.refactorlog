@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="dbc72161-d723-4aba-b479-0d9bdee90df7" ChangeDateTime="10/07/2021 09:30:28">
+    <Property Name="ElementName" Value="[dbo].[Category].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Category]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CategoryId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e82da42e-abe3-4a51-9ccc-72c2cf4d74ef" ChangeDateTime="10/07/2021 09:30:41">
+    <Property Name="ElementName" Value="[dbo].[Category].[CategoryId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Category]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CategoryID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6faadd41-10b3-42f9-a221-170ba80c9f10" ChangeDateTime="10/07/2021 09:33:19">
+    <Property Name="ElementName" Value="[dbo].[Skill].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Skill]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SkillID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ca088b14-1d74-485a-8848-d4fe42e6ffd4" ChangeDateTime="10/07/2021 09:50:20">
+    <Property Name="ElementName" Value="[dbo].[User].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[User]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a1f5a26b-54d9-4add-9a0c-722dbbeb13c6" ChangeDateTime="10/07/2021 10:01:48">
+    <Property Name="ElementName" Value="[dbo].[UserSkill].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserSkill]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserSkilID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ff029074-69d3-4816-97cb-11e5e2de10d0" ChangeDateTime="10/07/2021 10:08:03">
+    <Property Name="ElementName" Value="[dbo].[FK_UserSkill_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[UserSkill]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_UserSkill_ToUser]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="80aeaa88-43ed-4478-9d7f-8c1c81bb3be1" ChangeDateTime="10/07/2021 11:21:09">
+    <Property Name="ElementName" Value="[dbo].[Contract].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Contract]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ContractID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="479c80f1-7fe4-4644-8501-aa67b59a2424" ChangeDateTime="10/07/2021 11:22:34">
+    <Property Name="ElementName" Value="[dbo].[Contract].[DveID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Contract]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DevID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="250821a5-ad5a-4fd0-aefb-270b33474924" ChangeDateTime="10/07/2021 11:30:55">
+    <Property Name="ElementName" Value="[dbo].[NeededSkill].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NeededSkill]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NeededSkillID" />
+  </Operation>
+</Operations>
