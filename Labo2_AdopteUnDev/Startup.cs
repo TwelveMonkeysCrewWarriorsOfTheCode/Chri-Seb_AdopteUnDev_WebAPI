@@ -31,6 +31,7 @@ namespace Labo2_AdopteUnDev
 			});
 			services.AddScoped<IUserRepoLibrary, UserService>();
 			services.AddScoped<IContractRepoLibrary, ContractService>();
+			services.AddScoped<ISkillRepoLibrary, SkillService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

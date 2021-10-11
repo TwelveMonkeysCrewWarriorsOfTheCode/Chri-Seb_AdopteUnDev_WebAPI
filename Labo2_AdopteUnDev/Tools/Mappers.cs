@@ -64,5 +64,40 @@ namespace Labo2_AdopteUnDev.Tools
 				DevId = contract.DevId
 			};
 		}
+		public static DAL.Models.AddSkill ToAPICS2(this API.AddSkill skill)
+		{
+			return new DAL.Models.AddSkill
+			{
+				ContractID = skill.ContractID,
+				SkillID = skill.SkillID
+			};
+		}
+		public static API.Skill ToAPICCS(this DAL.Models.Skill skill)
+		{
+			if (skill != null)
+			{
+				return new API.Skill
+				{
+					SkillID = skill.SkillID,
+					Name = skill.Name,
+					Description = skill.Description,
+					CategoryID = skill.CategoryID
+				};
+			}
+			return null;
+		}
+		public static API.SkillCID ToAPICS(this DAL.Models.SkillCID skill)
+		{
+			if (skill != null)
+			{
+				return new API.SkillCID
+				{
+					NeededSkillsID = skill.NeededSkillsID,
+					ContractID = skill.ContractID,
+					SkillID = skill.SkillID
+				};
+			}
+			return null;
+		}
 	}
 }
