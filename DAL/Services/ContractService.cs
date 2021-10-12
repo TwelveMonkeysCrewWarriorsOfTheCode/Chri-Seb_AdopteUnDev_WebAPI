@@ -35,7 +35,7 @@ namespace DAL.Services
 				DeadLine = reader["DeadLine"] == DBNull.Value ? null : reader["DeadLine"].ToString(),
 				ClientId = reader["ClientId"] == DBNull.Value ? null : (int)reader["ClientId"],
 				DevId = reader["DevId"] == DBNull.Value ? null : (int)reader["DevId"],
-				UName = reader["UName"] == DBNull.Value ? null : reader["UName"].ToString()
+				UName = reader["Name"] == DBNull.Value ? null : reader["Name"].ToString()
 			};
 
 		}
@@ -55,21 +55,21 @@ namespace DAL.Services
 
 		public IEnumerable<Contract> GetContract()
 		{
-			string query = "SELECT ContractID, Description, Price, DeadLine, ClientID, DevID, [User].Name as UName FROM [Contract] INNER JOIN [User] ON Contract.ClientID = [User].UserID";
+			string query = "SELECT ContractID, Description, Price, DeadLine, ClientID, DevID, Name FROM [Contract] INNER JOIN [User] ON Contract.ClientID = [User].UserID";
 			Command cmd = new Command(query);
 			return seConnecter().ExecuteReader(cmd, ConvertContractAll);
 		}
 
 		public IEnumerable<Contract> GetContractAvailable()
 		{
-			string query = "SELECT ContractID, Description, Price, DeadLine, ClientID, DevID, [User].Name as UName FROM [Contract] INNER JOIN [User] ON Contract.ClientID = [User].UserID WHERE DevID is null";
+			string query = "SELECT ContractID, Description, Price, DeadLine, ClientID, DevID, Name FROM [Contract] INNER JOIN [User] ON Contract.ClientID = [User].UserID WHERE DevID is null";
 			Command cmd = new Command(query);
 			return seConnecter().ExecuteReader(cmd, ConvertContractAll);
 		}
 
 		public IEnumerable<Contract> GetContractAcceptedByDev(int id)
 		{
-			string query = "SELECT ContractID, Description, Price, DeadLine, ClientID, DevID, [User].Name as UName FROM [Contract] INNER JOIN [User] ON Contract.ClientID = [User].UserID WHERE DevId = @UserID";
+			string query = "SELECT ContractID, Description, Price, DeadLine, ClientID, DevID, Name FROM [Contract] INNER JOIN [User] ON Contract.ClientID = [User].UserID WHERE DevId = @UserID";
 			Command cmd = new Command(query);
 			cmd.AddParameter("UserId", id);
 			return seConnecter().ExecuteReader(cmd, ConvertContractAll);
@@ -77,7 +77,7 @@ namespace DAL.Services
 
 		public IEnumerable<Contract> GetContractIssuedByClient(int id)
 		{
-			string query = "SELECT ContractID, Description, Price, DeadLine, ClientID, DevID, [User].Name as UName FROM [Contract] INNER JOIN [User] ON Contract.ClientID = [User].UserID WHERE ClientId = @UserID";
+			string query = "SELECT ContractID, Description, Price, DeadLine, ClientID, DevID, Name FROM [Contract] LEFT JOIN [User] ON Contract.DevID = [User].UserID WHERE ClientId = @UserID";
 			Command cmd = new Command(query);
 			cmd.AddParameter("UserId", id);
 			return seConnecter().ExecuteReader(cmd, ConvertContractAll);
