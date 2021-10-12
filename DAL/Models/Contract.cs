@@ -8,5 +8,6 @@
 		public string DeadLine { get; set; }
 		public int? ClientId { get; set; }
 		public int? DevId { get; set; }
+		public string UName { get; set; }
 	}
 }

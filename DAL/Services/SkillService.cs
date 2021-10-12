@@ -41,7 +41,7 @@ namespace DAL.Services
 				SkillID = reader["SkillID"] == DBNull.Value ? null : (int)reader["SkillID"],
 				Name = reader["Name"] == DBNull.Value ? null : reader["Name"].ToString(),
 				Description = reader["Description"] == DBNull.Value ? null : reader["Description"].ToString(),
-				CategoryID = reader["CategoryID"] == DBNull.Value ? null : (int)reader["CategoryID"]
+				CName = reader["CName"] == DBNull.Value ? null : reader["CName"].ToString()
 			};
 		}
 		private SkillCID ConvertSkill2(SqlDataReader reader)
@@ -55,7 +55,7 @@ namespace DAL.Services
 		}
 		public IEnumerable<Skill> GetSkill()
 		{
-			string query = "SELECT * FROM [Skill]";
+			string query = "select SkillID, [Skill].Name, Description, [Category].Name as CName from [Skill] INNER JOIN Category ON Skill.CategoryID = Category.CategoryID";
 			Command cmd = new Command(query);
 			return seConnecter().ExecuteReader(cmd, ConvertSkill);
 		}

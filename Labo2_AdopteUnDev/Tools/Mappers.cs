@@ -41,7 +41,8 @@ namespace Labo2_AdopteUnDev.Tools
 					Price = contract.Price,
 					DeadLine = contract.DeadLine,
 					ClientId = contract.ClientId,
-					DevId = contract.DevId
+					DevId = contract.DevId,
+					UName = contract.UName
 				};
 			}
 			return null;
@@ -81,7 +82,7 @@ namespace Labo2_AdopteUnDev.Tools
 					SkillID = skill.SkillID,
 					Name = skill.Name,
 					Description = skill.Description,
-					CategoryID = skill.CategoryID
+					CName = skill.CName
 				};
 			}
 			return null;
