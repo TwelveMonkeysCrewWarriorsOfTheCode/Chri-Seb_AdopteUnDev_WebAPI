@@ -92,5 +92,12 @@ namespace Labo2_AdopteUnDev.Controllers
 		{
 			return Ok(_userService.GetUserSkillsUserId(id).Select(c => c.ToAPICSk2()));
 		}
+
+		[HttpGet]
+		[Route("GetDevWithSkillsByDevId/{id}")]
+		public IActionResult GetDevWithSkillsByDevId(int id)
+		{
+			return Ok(_userService.GetDevWithSkillsByDevId(id).Select(d => d.ToAPICDsk()));
+		}
 	}
 }

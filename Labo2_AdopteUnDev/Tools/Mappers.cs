@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 using API = Labo2_AdopteUnDev.Models;
 
 namespace Labo2_AdopteUnDev.Tools
@@ -117,6 +119,21 @@ namespace Labo2_AdopteUnDev.Tools
 					UserSkillID = skill.UserSkillID,
 					UserID = skill.UserID,
 					SkillID = skill.SkillID
+				};
+			}
+			return null;
+		}
+
+		public static API.DevWithSkills ToAPICDsk(this DAL.Models.DevWithSkills skill)
+		{
+			if (skill != null)
+			{
+				return new API.DevWithSkills
+				{
+					Dev = (API.UserDev)skill.Dev,
+					UserSkills = (IEnumerable<API.UserSkills>)skill.UserSkills,
+					ListSkills = (IEnumerable<API.Skill>)skill.ListSkills,
+					Categories = (IEnumerable<API.Category>)skill.Categories
 				};
 			}
 			return null;
