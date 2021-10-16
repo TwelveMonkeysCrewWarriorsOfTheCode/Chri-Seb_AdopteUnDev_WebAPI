@@ -121,5 +121,33 @@ namespace DAL.Services
 			cmd.AddParameter("UserID", Id);
 			return seConnecter().ExecuteReader(cmd, ConvertUserSkill);
 		}
+		public IEnumerable<DevWithSkills> GetDevWithSkillsByDevId(int Id)
+		{
+			string query = "SELECT [dbo].[User].[UserID], [dbo].[User].[Name], [dbo].[User].[Email], [dbo].[User].[Telephone], " +
+				"[dbo].[UserSkill].[UserSkilID], [dbo].[UserSkill].[SkillID], " +
+				"[dbo].[Skill].[Name] AS 'Skill Name', [dbo].[Skill].[Description], [dbo].[Skill].[CategoryID], " +
+				"[dbo].[Category].[Name] AS 'Category Name' " +
+				"FROM [dbo].[User] " +
+				"JOIN [dbo].[UserSkill] " +
+				"ON [dbo].[User].[UserID] = [dbo].[UserSkill].[UserID] " +
+				"JOIN [dbo].[Skill] " +
+				"ON [dbo].[UserSkill].[SkillID] = [dbo].[Skill].[SkillID] " +
+				"JOIN [dbo].[Category] " +
+				"ON [dbo].[Skill].[CategoryID] = [dbo].[Category].[CategoryID] " +
+				"WHERE [dbo].[User].[UserID] = @UserID";
+			Command cmd = new Command(query);
+			cmd.AddParameter("UserID", Id);
+			return seConnecter().ExecuteReader(cmd, ConvertDevWithSkills);
+		}
+		private DevWithSkills ConvertDevWithSkills(SqlDataReader reader)
+		{
+			return new DevWithSkills
+			{
+				Dev = (User)reader["Dev"],
+				UserSkills = (IEnumerable<UserSkills>)reader["UserSkills"],
+				ListSkills = (IEnumerable<Skill>)reader["ListSkills"],
+				Categories = (IEnumerable<Category>)reader["Categories"]
+			};
+		}
 	}
 }

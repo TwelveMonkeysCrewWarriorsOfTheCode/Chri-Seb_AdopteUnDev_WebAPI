@@ -12,5 +12,6 @@ namespace DAL.Interfaces
 		public IEnumerable<User> GetDev();
 		public bool InsertUserSkill(AddUserSkill s);
 		public IEnumerable<UserSkills> GetUserSkillsUserId(int Id);
+		public IEnumerable<DevWithSkills> GetDevWithSkillsByDevId(int Id);
 	}
 }
