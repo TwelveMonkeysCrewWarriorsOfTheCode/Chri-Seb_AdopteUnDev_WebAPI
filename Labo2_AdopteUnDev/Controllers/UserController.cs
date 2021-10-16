@@ -77,5 +77,20 @@ namespace Labo2_AdopteUnDev.Controllers
 		{
 			return Ok(_userService.GetById(id).ToAPI2());
 		}
+
+		[HttpPost]
+		[Route("AddUserSkill")]
+		public IActionResult InsertUserSkill(AddUserSkill s)
+		{
+			if (!ModelState.IsValid) return BadRequest("Ca a foiré");
+			_userService.InsertUserSkill(s.ToAPICSk1());
+			return Ok("Enregistrement effectué");
+		}
+		[HttpGet]
+		[Route("GetUserSkillUserId/{id}")]
+		public IActionResult GetUserSkillUserId(int id)
+		{
+			return Ok(_userService.GetUserSkillsUserId(id).Select(c => c.ToAPICSk2()));
+		}
 	}
 }

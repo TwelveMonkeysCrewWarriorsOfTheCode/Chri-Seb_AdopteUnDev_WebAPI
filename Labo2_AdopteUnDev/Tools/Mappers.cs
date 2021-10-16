@@ -100,5 +100,26 @@ namespace Labo2_AdopteUnDev.Tools
 			}
 			return null;
 		}
+		public static DAL.Models.AddUserSkill ToAPICSk1(this API.AddUserSkill skill)
+		{
+			return new DAL.Models.AddUserSkill
+			{
+				UserID = skill.UserID,
+				SkillID = skill.SkillID
+			};
+		}
+		public static API.UserSkills ToAPICSk2(this DAL.Models.UserSkills skill)
+		{
+			if (skill != null)
+			{
+				return new API.UserSkills
+				{
+					UserSkillID = skill.UserSkillID,
+					UserID = skill.UserID,
+					SkillID = skill.SkillID
+				};
+			}
+			return null;
+		}
 	}
 }

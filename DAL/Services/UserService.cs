@@ -97,5 +97,29 @@ namespace DAL.Services
 			cmd.AddParameter("IsClient", 0);
 			return seConnecter().ExecuteReader(cmd, ConvertUserAll);
 		}
+		public bool InsertUserSkill(AddUserSkill s)
+		{
+			string query = "INSERT INTO UserSkill (UserID, SkillID VALUES(@us, @sk)";
+			Command cmd = new Command(query);
+			cmd.AddParameter("us", s.UserID);
+			cmd.AddParameter("sk", s.SkillID);
+			return seConnecter().ExecuteNonQuery(cmd) == 1;
+		}
+		private UserSkills ConvertUserSkill(SqlDataReader reader)
+		{
+			return new UserSkills
+			{
+				UserSkillID = reader["UserSkillID"] == DBNull.Value ? null : (int)reader["UserSkillID"],
+				UserID = reader["UserID"] == DBNull.Value ? null : (int)reader["UserID"],
+				SkillID = reader["SkillID"] == DBNull.Value ? null : (int)reader["SkillID"]
+			};
+		}
+		public IEnumerable<UserSkills> GetUserSkillsUserId(int Id)
+		{
+			string query = "SELECT * FROM [UserSkills] WHERE UserID = @UserID";
+			Command cmd = new Command(query);
+			cmd.AddParameter("UserID", Id);
+			return seConnecter().ExecuteReader(cmd, ConvertUserSkill);
+		}
 	}
 }

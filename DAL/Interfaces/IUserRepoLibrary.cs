@@ -10,5 +10,7 @@ namespace DAL.Interfaces
 		public LoginUser Login(string email, string password);
 		public User GetById(int Id);
 		public IEnumerable<User> GetDev();
+		public bool InsertUserSkill(AddUserSkill s);
+		public IEnumerable<UserSkills> GetUserSkillsUserId(int Id);
 	}
 }
