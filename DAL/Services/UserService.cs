@@ -109,17 +109,17 @@ namespace DAL.Services
 		{
 			return new UserSkills
 			{
-				UserSkillID = reader["UserSkillID"] == DBNull.Value ? null : (int)reader["UserSkillID"],
+				UserSkillID = reader["UserSkilID"] == DBNull.Value ? null : (int)reader["UserSkilID"],
 				UserID = reader["UserID"] == DBNull.Value ? null : (int)reader["UserID"],
 				SkillID = reader["SkillID"] == DBNull.Value ? null : (int)reader["SkillID"]
 			};
 		}
 		public IEnumerable<UserSkills> GetUserSkillsUserId(int Id)
 		{
-			string query = "SELECT * FROM [UserSkills] WHERE UserID = @UserID";
+			string query = "SELECT * FROM [UserSkill] WHERE UserID = @UserID"; // Comment passer un JOIN
 			Command cmd = new Command(query);
 			cmd.AddParameter("UserID", Id);
-			return seConnecter().ExecuteReader(cmd, ConvertUserSkill);
+			return seConnecter().ExecuteReader(cmd, ConvertUserSkill).ToList();
 		}
 	}
 }
