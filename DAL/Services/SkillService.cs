@@ -61,7 +61,7 @@ namespace DAL.Services
 		}
 		public IEnumerable<Skill> GetSkillById(int Id)
 		{
-			string query = "SELECT * FROM [Skill] WHERE SkillId = @SkillId";
+			string query = "select SkillID, [Skill].Name, Description, [Category].Name as CName from [Skill] INNER JOIN Category ON Skill.CategoryID = Category.CategoryID WHERE SkillId = @SkillId";
 			Command cmd = new Command(query);
 			cmd.AddParameter("SkillId", Id);
 			return seConnecter().ExecuteReader(cmd, ConvertSkill);
