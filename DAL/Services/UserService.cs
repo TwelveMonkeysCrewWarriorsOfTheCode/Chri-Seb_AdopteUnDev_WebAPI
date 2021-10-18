@@ -111,12 +111,15 @@ namespace DAL.Services
 			{
 				UserSkillID = reader["UserSkilID"] == DBNull.Value ? null : (int)reader["UserSkilID"],
 				UserID = reader["UserID"] == DBNull.Value ? null : (int)reader["UserID"],
-				SkillID = reader["SkillID"] == DBNull.Value ? null : (int)reader["SkillID"]
+				SkillID = reader["SkillID"] == DBNull.Value ? null : (int)reader["SkillID"],
+				SkillName = reader["Name"] == DBNull.Value ? null : reader["Name"].ToString(),
+				CName = reader["CName"] == DBNull.Value ? null : reader["CName"].ToString()
 			};
 		}
 		public IEnumerable<UserSkills> GetUserSkillsUserId(int Id)
 		{
-			string query = "SELECT * FROM [UserSkill] WHERE UserID = @UserID"; // Comment passer un JOIN
+			//string query = "SELECT * FROM [UserSkill] WHERE UserID = @UserID"; // Comment passer un JOIN
+			string query = "SELECT UserSkilID, [UserSkill].UserID, [UserSkill].SkillID, [Skill].Name, Category.Name as CName FROM[UserSkill] INNER JOIN[Skill] ON[UserSkill].SkillID = [Skill].SkillID INNER JOIN Category ON Skill.CategoryID = Category.CategoryID WHERE [UserSkill].UserID = @UserID"; // Comment passer un JOIN
 			Command cmd = new Command(query);
 			cmd.AddParameter("UserID", Id);
 			return seConnecter().ExecuteReader(cmd, ConvertUserSkill).ToList();

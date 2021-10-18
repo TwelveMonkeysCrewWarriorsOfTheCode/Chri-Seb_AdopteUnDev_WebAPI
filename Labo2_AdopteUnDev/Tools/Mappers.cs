@@ -116,7 +116,9 @@ namespace Labo2_AdopteUnDev.Tools
 				{
 					UserSkillID = skill.UserSkillID,
 					UserID = skill.UserID,
-					SkillID = skill.SkillID
+					SkillID = skill.SkillID,
+					SkillName = skill.SkillName,
+					CName = skill.CName
 				};
 			}
 			return null;
