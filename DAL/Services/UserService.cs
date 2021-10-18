@@ -99,7 +99,7 @@ namespace DAL.Services
 		}
 		public bool InsertUserSkill(AddUserSkill s)
 		{
-			string query = "INSERT INTO UserSkill (UserID, SkillID VALUES(@us, @sk)";
+			string query = "INSERT INTO UserSkill (UserID, SkillID) VALUES(@us, @sk)";
 			Command cmd = new Command(query);
 			cmd.AddParameter("us", s.UserID);
 			cmd.AddParameter("sk", s.SkillID);

@@ -55,7 +55,7 @@ namespace DAL.Services
 		}
 		public IEnumerable<Skill> GetSkill()
 		{
-			string query = "select SkillID, [Skill].Name, Description, [Category].Name as CName from [Skill] INNER JOIN Category ON Skill.CategoryID = Category.CategoryID";
+			string query = "select SkillID, [Skill].Name, Description, [Category].Name as CName from [Skill] INNER JOIN Category ON Skill.CategoryID = Category.CategoryID ORDER BY CName";
 			Command cmd = new Command(query);
 			return seConnecter().ExecuteReader(cmd, ConvertSkill);
 		}
