@@ -121,5 +121,15 @@ namespace Labo2_AdopteUnDev.Tools
 			}
 			return null;
 		}
+
+		public static DAL.Models.EditUserSkill ToAPIEDIT(this API.EditUserSkill skill)
+		{
+			return new DAL.Models.EditUserSkill
+			{
+				UserSkillID = skill.UserSkillID,
+				UserID = skill.UserID,
+				SkillID = skill.SkillID
+			};
+		}
 	}
 }

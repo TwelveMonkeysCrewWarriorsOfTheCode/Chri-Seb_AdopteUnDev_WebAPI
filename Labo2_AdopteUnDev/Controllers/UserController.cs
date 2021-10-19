@@ -92,5 +92,22 @@ namespace Labo2_AdopteUnDev.Controllers
 		{
 			return Ok(_userService.GetUserSkillsUserId(id).Select(c => c.ToAPICSk2()));
 		}
+
+		[HttpDelete]
+		[Route("DeleteUserSkills/{id}")]
+		public IActionResult DeleteUserSkills(int id)
+		{
+			_userService.DeleteUserSkills(id);
+			return Ok("Delete effectué");
+		}
+
+		[HttpPut]
+		[Route("UpdateUserSkill")]
+		public IActionResult UpdateUserSkill(Models.EditUserSkill u)
+		{
+			if (!ModelState.IsValid) return BadRequest("Ca a foiré");
+			_userService.UpdateUserSkill(u.ToAPIEDIT());
+			return Ok("Modification effectuée");
+		}
 	}
 }

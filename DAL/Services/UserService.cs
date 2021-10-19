@@ -121,5 +121,24 @@ namespace DAL.Services
 			cmd.AddParameter("UserID", Id);
 			return seConnecter().ExecuteReader(cmd, ConvertUserSkill).ToList();
 		}
+
+		public bool DeleteUserSkills(int Id)
+		{
+			string query = "DELETE FROM [UserSkill] WHERE UserSkilID = @UserSkillID";
+			Command cmd = new Command(query);
+			cmd.AddParameter("UserSkillId", Id);
+
+			return seConnecter().ExecuteNonQuery(cmd) == 1;
+		}
+		public bool UpdateUserSkill(EditUserSkill s)
+		{
+			string query = "UPDATE [UserSkill] SET UserID = @us, SkillID = @sk WHERE UserSkilID = @UserSkillID";
+			Command cmd = new Command(query);
+			cmd.AddParameter("us", s.UserID);
+			cmd.AddParameter("sk", s.SkillID);
+			cmd.AddParameter("UserSkillID", s.UserSkillID);
+
+			return seConnecter().ExecuteNonQuery(cmd) == 1;
+		}
 	}
 }
