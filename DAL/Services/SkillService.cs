@@ -48,7 +48,7 @@ namespace DAL.Services
 		{
 			return new SkillCID
 			{
-				NeededSkillsID = reader["NeededSkillsID"] == DBNull.Value ? null : (int)reader["NeededSkillsID"],
+				NeededSkillsID = reader["NeededSkillID"] == DBNull.Value ? null : (int)reader["NeededSkillID"],
 				ContractID = reader["ContractID"] == DBNull.Value ? null : (int)reader["ContractID"],
 				SkillID = reader["SkillID"] == DBNull.Value ? null : (int)reader["SkillID"]
 			};
@@ -68,9 +68,9 @@ namespace DAL.Services
 		}
 		public IEnumerable<SkillCID> GetSkillContractId(int Id)
 		{
-			string query = "SELECT * FROM [NeededSkills] WHERE ContractId = @ContractId";
+			string query = "SELECT * FROM [NeededSkill] WHERE ContractID = @ContractID";
 			Command cmd = new Command(query);
-			cmd.AddParameter("ContractId", Id);
+			cmd.AddParameter("ContractID", Id);
 			return seConnecter().ExecuteReader(cmd, ConvertSkill2);
 		}
 	}
