@@ -131,5 +131,17 @@ namespace Labo2_AdopteUnDev.Tools
 				SkillID = skill.SkillID
 			};
 		}
+
+		public static DAL.Models.EditContract ToAPIEC(this API.EditContract c)
+		{
+			return new DAL.Models.EditContract
+			{
+				ContractID = c.ContractID,
+				Description = c.Description,
+				Price = c.Price,
+				DeadLine = c.DeadLine,
+				DevId = c.DevId
+			};
+		}
 	}
 }

@@ -92,5 +92,26 @@ namespace DAL.Services
 
 			return seConnecter().ExecuteNonQuery(cmd) == 1;
 		}
+
+		public bool DeleteContract(int Id)
+		{
+			string query = "DELETE FROM [Contract] WHERE ContractID = @ContractID";
+			Command cmd = new Command(query);
+			cmd.AddParameter("ContractId", Id);
+
+			return seConnecter().ExecuteNonQuery(cmd) == 1;
+		}
+		public bool UpdateContract(EditContract c)
+		{
+			string query = "UPDATE [Contract] SET Description = @de, Price = @pr, DeadLine = @dl, DevId = @di WHERE ContractID = @ContractID";
+			Command cmd = new Command(query);
+			cmd.AddParameter("ContractID", c.ContractID);
+			cmd.AddParameter("de", c.Description);
+			cmd.AddParameter("pr", c.Price);
+			cmd.AddParameter("dl", c.DeadLine);
+			cmd.AddParameter("di", c.DevId);
+
+			return seConnecter().ExecuteNonQuery(cmd) == 1;
+		}
 	}
 }

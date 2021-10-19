@@ -67,5 +67,22 @@ namespace Labo2_AdopteUnDev.Controllers
 
 			return Ok("Contrat accepté");
 		}
+
+		[HttpDelete]
+		[Route("DeleteContract/{id}")]
+		public IActionResult DeleteContract(int id)
+		{
+			_contractService.DeleteContract(id);
+			return Ok("Delete effectué");
+		}
+
+		[HttpPut]
+		[Route("UpdateContract")]
+		public IActionResult UpdateContract(EditContract c)
+		{
+			if (!ModelState.IsValid) return BadRequest("Ca a foiré");
+			_contractService.UpdateContract(c.ToAPIEC());
+			return Ok("Modification effectuée");
+		}
 	}
 }

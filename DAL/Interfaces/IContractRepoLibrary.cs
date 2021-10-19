@@ -13,5 +13,7 @@ namespace DAL.Interfaces
 		public IEnumerable<Contract> GetContractAcceptedByDev(int id);
 		public IEnumerable<Contract> GetContractIssuedByClient(int id);
 		public bool PickContract(PickContract c);
+		public bool DeleteContract(int Id);
+		public bool UpdateContract(EditContract c);
 	}
 }
