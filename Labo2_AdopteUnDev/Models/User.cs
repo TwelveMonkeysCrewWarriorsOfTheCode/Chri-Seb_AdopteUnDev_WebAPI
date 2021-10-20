@@ -1,4 +1,4 @@
-﻿namespace Labo2_AdopteUnDev.Models
+namespace Labo2_AdopteUnDev.Models
 {
 	public class User
 	{
